@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyRateApi", "CompanyRateApi.csproj", "{5404DB2A-9F1E-4B84-80E3-6C714539AC4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5404DB2A-9F1E-4B84-80E3-6C714539AC4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5404DB2A-9F1E-4B84-80E3-6C714539AC4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5404DB2A-9F1E-4B84-80E3-6C714539AC4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5404DB2A-9F1E-4B84-80E3-6C714539AC4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
