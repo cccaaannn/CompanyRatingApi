@@ -4,7 +4,7 @@ namespace CompanyRateApi.Shared.Swagger;
 
 public static class SwaggerServiceExtension
 {
-    public static void AddSwagger(this IServiceCollection services, IConfiguration configuration)
+    public static void AddSwagger(this IServiceCollection services)
     {
         services.AddSwaggerGen(options =>
         {
@@ -14,16 +14,14 @@ public static class SwaggerServiceExtension
                 Version = "v1"
             });
 
-            // options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-            // {
-            //     Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
-            // });
-
-            options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+            options.AddSecurityDefinition("Jwt bearer auth", new OpenApiSecurityScheme
             {
                 In = ParameterLocation.Header,
                 Name = "Authorization",
-                Type = SecuritySchemeType.ApiKey,
+                Type = SecuritySchemeType.Http,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                Description = "Enter bearer token without 'Bearer' into field"
             });
 
             options.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -34,7 +32,7 @@ public static class SwaggerServiceExtension
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.SecurityScheme,
-                            Id = "oauth2"
+                            Id = "Jwt bearer auth"
                         }
                     },
                     []
