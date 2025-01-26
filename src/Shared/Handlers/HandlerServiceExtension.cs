@@ -11,7 +11,7 @@ public static class HandlerServiceExtension
             .Where(x => x.GetInterfaces()
                 .Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(IHandler<,>)))
             .ToList();
-        
+
         // Register all handler types
         foreach (var handlerType in handlerTypes)
         {
