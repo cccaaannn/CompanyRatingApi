@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
-using CompanyRateApi.Application.Companies.Enums;
-using CompanyRateApi.Shared.Persistence.Entities;
+using CompanyRatingApi.Application.Companies.Enums;
+using CompanyRatingApi.Shared.Persistence.Entities;
 
-namespace CompanyRateApi.Application.Companies.Entities;
+namespace CompanyRatingApi.Application.Companies.Entities;
 
 public class Company : EntityBase, ISoftDeletable
 {
@@ -24,5 +24,11 @@ public class Company : EntityBase, ISoftDeletable
 
     [MaxLength(100)] public string LogoUrl { get; set; } = string.Empty;
 
-    public bool IsDeleted { get; set; }
+    public double AverageRating { get; set; } = 0.0;
+
+    public virtual ICollection<CompanyRating> Ratings { get; set; } = [];
+
+    public virtual ICollection<CompanyComment> Comments { get; set; } = [];
+    
+    public bool IsDeleted { get; set; } = false;
 }

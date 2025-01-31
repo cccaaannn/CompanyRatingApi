@@ -1,8 +1,8 @@
-using CompanyRateApi.Application.Companies.Enums;
+using CompanyRatingApi.Application.Companies.Enums;
 
-namespace CompanyRateApi.Application.Companies.Dtos;
+namespace CompanyRatingApi.Application.Companies.Dtos;
 
-public class CompanyDto
+public record CompanyDto
 {
     public Guid Id { get; init; }
     
@@ -23,4 +23,8 @@ public class CompanyDto
     public string Website { get; init; } = string.Empty;
 
     public string LogoUrl { get; init; } = string.Empty;
+
+    public double AverageRating { get; init; } = 0.0;
+
+    public int RatingCount { get; init; } = 0;
 }

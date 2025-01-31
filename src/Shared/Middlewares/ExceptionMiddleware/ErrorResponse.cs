@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace CompanyRateApi.Shared.Middlewares.ExceptionMiddleware;
+namespace CompanyRatingApi.Shared.Middlewares.ExceptionMiddleware;
 
 public class ErrorResponse
 {

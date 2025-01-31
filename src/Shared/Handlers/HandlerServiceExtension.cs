@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace CompanyRateApi.Shared.Handlers;
+namespace CompanyRatingApi.Shared.Handlers;
 
 public static class HandlerServiceExtension
 {

@@ -1,4 +1,4 @@
-namespace CompanyRateApi.Shared.Pagination;
+namespace CompanyRatingApi.Shared.Pagination;
 
 public enum SortDirection
 {

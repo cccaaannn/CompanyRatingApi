@@ -2,12 +2,12 @@
 
 #nullable disable
 
-using CompanyRateApi.Shared.Persistence;
+using CompanyRatingApi.Shared.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CompanyRateApi.Migrations
+namespace CompanyRatingApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20241031002052_BaseEntity")]
@@ -23,7 +23,7 @@ namespace CompanyRateApi.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("CompanyRateApi.Persistence.Entities.Company", b =>
+            modelBuilder.Entity("CompanyRatingApi.Persistence.Entities.Company", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

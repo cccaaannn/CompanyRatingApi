@@ -1,8 +1,8 @@
 using System.Text.Json;
-using CompanyRateApi.Shared.Exceptions;
+using CompanyRatingApi.Shared.Exceptions;
 using ValidationException = System.ComponentModel.DataAnnotations.ValidationException;
 
-namespace CompanyRateApi.Shared.Middlewares.ExceptionMiddleware;
+namespace CompanyRatingApi.Shared.Middlewares.ExceptionMiddleware;
 
 public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
 {

@@ -1,11 +1,11 @@
 using AutoMapper;
-using CompanyRateApi.Application.Companies.Dtos;
-using CompanyRateApi.Shared.Exceptions;
-using CompanyRateApi.Shared.Handlers;
-using CompanyRateApi.Shared.Persistence;
+using CompanyRatingApi.Application.Companies.Dtos;
+using CompanyRatingApi.Shared.Exceptions;
+using CompanyRatingApi.Shared.Handlers;
+using CompanyRatingApi.Shared.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace CompanyRateApi.Application.Companies.Handlers.CompanyUpdate;
+namespace CompanyRatingApi.Application.Companies.Handlers.CompanyUpdate;
 
 public class CompanyUpdateHandler(
     ApplicationDbContext dbContext,

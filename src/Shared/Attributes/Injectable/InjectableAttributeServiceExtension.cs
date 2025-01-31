@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace CompanyRateApi.Shared.Attributes.Injectable;
+namespace CompanyRatingApi.Shared.Attributes.Injectable;
 
 public static class InjectableAttributeServiceExtension
 {

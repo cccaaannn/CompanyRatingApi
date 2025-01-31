@@ -1,11 +1,11 @@
-using CompanyRateApi.Application.Companies.Enums;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
+using CompanyRatingApi.Application.Companies.Enums;
 
-namespace CompanyRateApi.Application.Companies.Handlers.CompanyUpdate;
+namespace CompanyRatingApi.Application.Companies.Handlers.CompanyUpdate;
 
 public record CompanyUpdateRequest
 {
-    [JsonIgnore] public required Guid Id { get; init; }
+    [JsonIgnore] public Guid Id { get; init; }
 
     public required string Name { get; init; }
 

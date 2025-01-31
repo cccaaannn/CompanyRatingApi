@@ -1,4 +1,4 @@
-namespace CompanyRateApi.Shared.Handlers;
+namespace CompanyRatingApi.Shared.Handlers;
 
 public interface IHandler<T, U>
 {

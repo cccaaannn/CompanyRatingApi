@@ -1,12 +1,17 @@
 using System.Text.Json.Serialization;
-using CompanyRateApi.Shared.Attributes.Injectable;
-using CompanyRateApi.Shared.Handlers;
-using CompanyRateApi.Shared.Middlewares.ExceptionMiddleware;
-using CompanyRateApi.Shared.Persistence;
-using CompanyRateApi.Shared.Swagger;
+using CompanyRatingApi;
+using CompanyRatingApi.Middlewares;
+using CompanyRatingApi.Shared.Attributes.Injectable;
+using CompanyRatingApi.Shared.Auth;
+using CompanyRatingApi.Shared.Handlers;
+using CompanyRatingApi.Shared.Middlewares.ExceptionMiddleware;
+using CompanyRatingApi.Shared.Persistence;
+using CompanyRatingApi.Shared.Swagger;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +25,7 @@ builder.Services.AddFluentValidationAutoValidation();
 
 // Add Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwagger(builder.Configuration);
+builder.Services.AddSwagger();
 
 // Add DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -31,7 +36,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 // Add JWT Auth
-// builder.Services.AddJwtAuth(builder.Configuration);
+builder.Services.AddJwtAuth(builder.Configuration);
 
 // Register AutoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
@@ -45,16 +50,15 @@ builder.Services.AddInjectablesFromAssembly(typeof(Program).Assembly);
 // Register handlers
 builder.Services.AddHandlersFromAssembly(typeof(Program).Assembly);
 
-var app = builder.Build();
+// Register Application services
+builder.Services.RegisterApplicationServices(builder.Configuration);
 
-// Apply migrations
-using var scope = app.Services.CreateScope();
-await scope.ServiceProvider.GetRequiredService<DbContextBootstrap>().InitializeAsync();
+var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options => options.DocExpansion(DocExpansion.None));
     app.UseDeveloperExceptionPage();
 }
 else
@@ -66,9 +70,12 @@ else
 // Exception handling
 app.UseMiddleware<ExceptionMiddleware>();
 
-// app.MapIdentityApi<AppUser>();
-// app.UseAuthentication();
+// Authentiacation
+app.UseAuthentication();
 app.UseAuthorization();
+
+// Current user middleware, should be after authentication
+app.UseMiddleware<CurrentUserMiddleware>();
 
 app.MapControllers();
 

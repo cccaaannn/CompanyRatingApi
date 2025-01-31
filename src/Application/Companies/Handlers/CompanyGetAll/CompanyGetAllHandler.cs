@@ -2,14 +2,14 @@ using System.Linq.Expressions;
 using System.Reflection;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using CompanyRateApi.Application.Companies.Dtos;
-using CompanyRateApi.Application.Companies.Entities;
-using CompanyRateApi.Shared.Handlers;
-using CompanyRateApi.Shared.Pagination;
-using CompanyRateApi.Shared.Persistence;
+using CompanyRatingApi.Application.Companies.Dtos;
+using CompanyRatingApi.Application.Companies.Entities;
+using CompanyRatingApi.Shared.Handlers;
+using CompanyRatingApi.Shared.Pagination;
+using CompanyRatingApi.Shared.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace CompanyRateApi.Application.Companies.Handlers.CompanyGetAll;
+namespace CompanyRatingApi.Application.Companies.Handlers.CompanyGetAll;
 
 public class CompanyGetAllHandler(
     ApplicationDbContext dbContext,
@@ -19,6 +19,12 @@ public class CompanyGetAllHandler(
     public async Task<PagedList<CompanyDto>> Handle(CompanyGetAllRequest request, CancellationToken cancellationToken)
     {
         IQueryable<Company> query = dbContext.Companies;
+
+        if (!string.IsNullOrWhiteSpace(request.Name))
+            query = query.Where(x => x.Name.Contains(request.Name));
+
+        if (request.Industries?.Any() == true)
+            query = query.Where(x => request.Industries.Contains(x.Industry));
 
         var sortBy = GetOrderField(request.SortBy);
         query = request.SortDirection == SortDirection.Ascending

@@ -1,23 +1,26 @@
+using Ardalis.GuardClauses;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using CompanyRateApi.Application.Companies.Dtos;
-using CompanyRateApi.Shared.Exceptions;
-using CompanyRateApi.Shared.Handlers;
-using CompanyRateApi.Shared.Persistence;
+using CompanyRatingApi.Application.Companies.Dtos;
+using CompanyRatingApi.Shared.Handlers;
+using CompanyRatingApi.Shared.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace CompanyRateApi.Application.Companies.Handlers.CompanyGet;
+namespace CompanyRatingApi.Application.Companies.Handlers.CompanyGet;
 
 public class CompanyGetHandler(
     ApplicationDbContext dbContext,
     IMapper mapper
-) : IHandler<CompanyGetRequest, CompanyDto>
+) : IHandler<CompanyGetRequest, CompanyDetailDto>
 {
-    public async Task<CompanyDto> Handle(CompanyGetRequest request, CancellationToken cancellationToken)
+    public async Task<CompanyDetailDto> Handle(CompanyGetRequest request, CancellationToken cancellationToken)
     {
-        return await dbContext.Companies
-                   .ProjectTo<CompanyDto>(mapper.ConfigurationProvider)
-                   .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
-               ?? throw new NotFoundException();
+        var company = await dbContext.Companies
+            .Include(c => c.Comments.OrderByDescending(comment => comment.CreatedAt))
+            .ThenInclude(comment => comment.User)
+            .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+
+        Guard.Against.Null(company, nameof(company));
+
+        return mapper.Map<CompanyDetailDto>(company);
     }
 }

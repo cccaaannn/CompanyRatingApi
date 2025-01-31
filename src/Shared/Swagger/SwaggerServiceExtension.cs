@@ -1,6 +1,6 @@
 using Microsoft.OpenApi.Models;
 
-namespace CompanyRateApi.Shared.Swagger;
+namespace CompanyRatingApi.Shared.Swagger;
 
 public static class SwaggerServiceExtension
 {
@@ -10,7 +10,7 @@ public static class SwaggerServiceExtension
         {
             options.SwaggerDoc("v1", new OpenApiInfo()
             {
-                Title = "CompanyRateApi",
+                Title = "CompanyRatingApi",
                 Version = "v1"
             });
 

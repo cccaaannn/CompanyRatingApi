@@ -1,4 +1,4 @@
-namespace CompanyRateApi.Shared.Middlewares.ExceptionMiddleware;
+namespace CompanyRatingApi.Shared.Middlewares.ExceptionMiddleware;
 
 public enum HttpStatusCode
 {

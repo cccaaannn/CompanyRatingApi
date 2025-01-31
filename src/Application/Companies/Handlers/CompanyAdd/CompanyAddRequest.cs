@@ -1,6 +1,6 @@
-using CompanyRateApi.Application.Companies.Enums;
+using CompanyRatingApi.Application.Companies.Enums;
 
-namespace CompanyRateApi.Application.Companies.Handlers.CompanyAdd;
+namespace CompanyRatingApi.Application.Companies.Handlers.CompanyAdd;
 
 public record CompanyAddRequest
 {

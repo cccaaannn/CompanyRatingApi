@@ -1,14 +1,20 @@
 using System.Reflection;
-using CompanyRateApi.Application.Companies.Entities;
-using CompanyRateApi.Shared.Persistence.Entities;
+using CompanyRatingApi.Application.Authentication.Entities;
+using CompanyRatingApi.Application.Companies.Entities;
+using CompanyRatingApi.Shared.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CompanyRateApi.Shared.Persistence;
+namespace CompanyRatingApi.Shared.Persistence;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
-// public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<AppUser>(options)
 {
+    public DbSet<AppUser> AppUsers { get; set; }
+
     public DbSet<Company> Companies { get; set; }
+
+    public DbSet<CompanyRating> CompanyRatings { get; set; }
+    
+    public DbSet<CompanyComment> CompanyComments { get; set; }
 
     public override int SaveChanges()
     {

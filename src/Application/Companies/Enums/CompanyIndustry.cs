@@ -1,4 +1,4 @@
-namespace CompanyRateApi.Application.Companies.Enums;
+namespace CompanyRatingApi.Application.Companies.Enums;
 
 public enum CompanyIndustry
 {

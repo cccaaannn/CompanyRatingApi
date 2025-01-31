@@ -1,4 +1,4 @@
-namespace CompanyRateApi.Shared.Attributes.Injectable;
+namespace CompanyRatingApi.Shared.Attributes.Injectable;
 
 [AttributeUsage(AttributeTargets.Class, Inherited = false)]
 public class InjectableAttribute : Attribute

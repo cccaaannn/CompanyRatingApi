@@ -1,4 +1,4 @@
-namespace CompanyRateApi.Shared.Persistence.Entities;
+namespace CompanyRatingApi.Shared.Persistence.Entities;
 
 public class EntityBase
 {

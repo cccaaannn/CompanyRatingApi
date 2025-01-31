@@ -1,4 +1,4 @@
-﻿namespace CompanyRateApi.Shared.Pagination;
+﻿namespace CompanyRatingApi.Shared.Pagination;
 
 public class PagedList<T>(List<T> content, int page, int size, int total)
 {

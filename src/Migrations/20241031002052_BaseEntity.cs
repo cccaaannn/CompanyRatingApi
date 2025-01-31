@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CompanyRateApi.Migrations
+namespace CompanyRatingApi.Migrations
 {
     /// <inheritdoc />
     public partial class BaseEntity : Migration

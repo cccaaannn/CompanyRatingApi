@@ -1,4 +1,4 @@
-namespace CompanyRateApi.Shared.Auth;
+namespace CompanyRatingApi.Shared.Auth;
 
 public record JwtConfig
 {

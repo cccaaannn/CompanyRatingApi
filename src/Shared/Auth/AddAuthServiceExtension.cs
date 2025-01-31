@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 
-namespace CompanyRateApi.Shared.Auth;
+namespace CompanyRatingApi.Shared.Auth;
 
 public static class AddAuthServiceExtension
 {

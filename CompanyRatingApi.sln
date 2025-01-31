@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyRateApi", "CompanyRateApi.csproj", "{5404DB2A-9F1E-4B84-80E3-6C714539AC4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyRatingApi", "CompanyRatingApi.csproj", "{5404DB2A-9F1E-4B84-80E3-6C714539AC4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

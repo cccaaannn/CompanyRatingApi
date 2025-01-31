@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace CompanyRateApi.Application.Companies.Handlers.CompanyAdd;
+namespace CompanyRatingApi.Application.Companies.Handlers.CompanyAdd;
 
 public class CompanyAddRequestValidator : AbstractValidator<CompanyAddRequest>
 {

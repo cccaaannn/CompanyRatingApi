@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace CompanyRateApi.Shared.Auth;
+namespace CompanyRatingApi.Shared.Auth;
 
 public class TokenUtils(JwtConfig jwtConfig) : ITokenUtils
 {

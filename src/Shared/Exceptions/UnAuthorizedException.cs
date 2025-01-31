@@ -1,3 +1,3 @@
-namespace CompanyRateApi.Shared.Exceptions;
+namespace CompanyRatingApi.Shared.Exceptions;
 
 public class UnAuthorizedException() : Exception("Unauthorized");

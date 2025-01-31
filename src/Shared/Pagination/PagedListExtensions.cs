@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace CompanyRateApi.Shared.Pagination;
+namespace CompanyRatingApi.Shared.Pagination;
 
 public static class PagedListExtensions
 {

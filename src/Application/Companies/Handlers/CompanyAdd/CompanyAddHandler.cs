@@ -1,13 +1,13 @@
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using CompanyRateApi.Application.Companies.Dtos;
-using CompanyRateApi.Application.Companies.Entities;
-using CompanyRateApi.Shared.Exceptions;
-using CompanyRateApi.Shared.Handlers;
-using CompanyRateApi.Shared.Persistence;
+using CompanyRatingApi.Application.Companies.Dtos;
+using CompanyRatingApi.Application.Companies.Entities;
+using CompanyRatingApi.Shared.Exceptions;
+using CompanyRatingApi.Shared.Handlers;
+using CompanyRatingApi.Shared.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace CompanyRateApi.Application.Companies.Handlers.CompanyAdd;
+namespace CompanyRatingApi.Application.Companies.Handlers.CompanyAdd;
 
 public class CompanyAddHandler(
     ApplicationDbContext dbContext,

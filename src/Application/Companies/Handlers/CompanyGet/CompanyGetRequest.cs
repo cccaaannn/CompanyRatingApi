@@ -1,3 +1,3 @@
-namespace CompanyRateApi.Application.Companies.Handlers.CompanyGet;
+namespace CompanyRatingApi.Application.Companies.Handlers.CompanyGet;
 
 public record CompanyGetRequest(Guid Id);
