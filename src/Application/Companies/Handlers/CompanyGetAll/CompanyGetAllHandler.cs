@@ -46,7 +46,7 @@ public class CompanyGetAllHandler(
         );
 
         if (property != null)
-            return x => EF.Property<object>(x, sortBy);
+            return x => EF.Property<object>(x, property.Name);
 
         return x => x.CreatedAt;
     }
