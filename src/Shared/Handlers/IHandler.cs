@@ -1,6 +1,6 @@
 namespace CompanyRatingApi.Shared.Handlers;
 
-public interface IHandler<T, U>
+public interface IHandler<in TReq, TRes>
 {
-    public Task<U> Handle(T request, CancellationToken cancellationToken);
+    public Task<TRes> Handle(TReq request, CancellationToken cancellationToken);
 }

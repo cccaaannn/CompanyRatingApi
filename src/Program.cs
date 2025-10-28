@@ -3,6 +3,7 @@ using CompanyRatingApi;
 using CompanyRatingApi.Middlewares;
 using CompanyRatingApi.Shared.Attributes.Injectable;
 using CompanyRatingApi.Shared.Auth;
+using CompanyRatingApi.Shared.Cors;
 using CompanyRatingApi.Shared.Handlers;
 using CompanyRatingApi.Shared.Middlewares.ExceptionMiddleware;
 using CompanyRatingApi.Shared.Persistence;
@@ -10,7 +11,6 @@ using CompanyRatingApi.Shared.Swagger;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,24 +53,32 @@ builder.Services.AddHandlersFromAssembly(typeof(Program).Assembly);
 // Register Application services
 builder.Services.RegisterApplicationServices(builder.Configuration);
 
+// Add CORS
+builder.Services.AddCustomCors(builder.Configuration);
+
 var app = builder.Build();
+
+// Swagger
+app.UseSwagger();
+app.UseSwaggerUI(options => options.DocExpansion(DocExpansion.None));
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options => options.DocExpansion(DocExpansion.None));
     app.UseDeveloperExceptionPage();
 }
 else
 {
     app.UseHsts(); // HTTP Strict Transport Security
-    app.UseHttpsRedirection(); // Enforce HTTPS 
+    // app.UseHttpsRedirection(); // Don't enforce HTTPS, we might be behind a proxy that handles HTTPS
 }
 
 // Exception handling
 app.UseMiddleware<ExceptionMiddleware>();
 
-// Authentiacation
+// CORS
+app.UseCustomCors();
+
+// Authentication
 app.UseAuthentication();
 app.UseAuthorization();
 
