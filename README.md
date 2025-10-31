@@ -8,17 +8,26 @@ Api for rating companies.
 
 ## Development
 
-### Install dependencies
-```shell
-dotnet restore
-```
+### Setup
+1. Install dependencies
+    ```shell
+    dotnet restore
+    ```
+2. Create and update `appsettings.Development.json`
+    ```shell
+   cp appsettings.json appsettings.Development.json
+    ```
+3. Apply migrations (application applies automatically on startup)
+    ```shell
+    dotnet ef database update
+    ```
+4. Run
+    ```shell
+    dotnet run
+    ```
 
-### Add migraition
-```shell
-dotnet ef migrations add <migration_name>
-```
-
-### Apply migraitions (application applies automatically on startup)
-```shell
-dotnet ef database update
-```
+### Migrations
+- Add migration
+    ```shell
+    dotnet ef migrations add <migration_name>
+    ```
