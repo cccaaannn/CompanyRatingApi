@@ -24,12 +24,7 @@ public class CompanyProfile : Profile
 
         CreateMap<Company, CompanyDetailDto>()
             .IncludeBase<Company, CompanyDto>()
-            .ForMember(dest => dest.RatingCount,
-                opt =>
-                    opt.MapFrom(src =>
-                        src.Ratings.Count
-                    )
-            ).ReverseMap();
+            .ReverseMap();
 
         CreateMap<CompanyComment, CompanyCommentDto>()
             .ForMember(dest => dest.UserName,

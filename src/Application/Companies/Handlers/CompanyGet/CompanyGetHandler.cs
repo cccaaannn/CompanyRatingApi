@@ -15,6 +15,7 @@ public class CompanyGetHandler(
     public async Task<CompanyDetailDto> Handle(CompanyGetRequest request, CancellationToken cancellationToken)
     {
         var company = await dbContext.Companies
+            .Include(c => c.Ratings)
             .Include(c => c.Comments.OrderByDescending(comment => comment.CreatedAt))
             .ThenInclude(comment => comment.User)
             .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
